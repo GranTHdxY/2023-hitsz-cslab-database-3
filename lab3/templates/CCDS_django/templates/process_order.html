@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href = "/">
+  <link rel="stylesheet" type="text/css" href="../static/css/user_info.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/button.css">
+</head>
+
+<body>
+<form action="{% url 'process_order' %}" method="POST">
+  {% csrf_token %}
+  <div class="user-info">
+    <div class="avatar">
+      <img src="C:\Users\GranTHdxY\PycharmProjects\lab3\static\avatar.jpeg" />
+    </div>
+    <div class="info">
+      <p class="user-name">{{ username}}</p>
+    </div>
+  </div>
+
+  <div class="content">
+  <h2>订 单 列 表</h2>
+  <div class="container">
+    <table class="list">
+      <tr>
+        <th>订单编号</th>
+        <th>用户编号</th>
+        <th>手机号</th>
+        <th>地址</th>
+        <th>菜品内容</th>
+        <th>支付方式</th>
+        <th>下单时间</th>
+        <th>订单总金额</th>
+        <th>订单状态</th>
+        <th>操作</th>
+      </tr>
+      {% for order_info in order_list %}
+      <tr>
+        <td>
+          <h3>{{ order_info.order_id}}</h3>
+        </td>
+        <td>
+          <p>{{ order_info.customer.customer_id}}</p>
+        </td>
+        <td>
+          <p>{{ order_info.customer.phone_number}}</p>
+        </td>
+        <td>
+          <p>{{ order_info.customer.address}}</p>
+        </td>
+
+        <td>
+          {% for order_context in order_contexts %}
+            {% if order_info.order_id == order_context.order_id %}
+                {% for cuisine in cuisines %}
+                    {% if cuisine_info.cuisine_id == order_context.cuisine_id%}
+                        <td>{{ cuisine.name }}</td>
+                        <td>{{ cuisine.price }}</td>
+                        <td>{{ order_context.cuisine_num }}</td>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+          {% endfor %}
+        </td>
+        <td>
+          <p>{{ order_info.payment_mode}}</p>
+        </td>
+        <td>
+          <p>{{ order_info.payment_time}}</p>
+        </td>
+        <td>
+          <p>{{ order_info.total_cost}}</p>
+        </td>
+        <td>
+          <p  id="order-state-{{ order_info.order_id }}">{{ order_info.order_state}}</p>
+        </td>
+        <td>
+           <form action="{% url 'process_order' %}" method="POST">
+              {% csrf_token %}
+            <input type="hidden" name="order_id" value="{{ order_info.order_id }}">
+            <input type="hidden" name="new_state" value="2">
+            <button class="sqaure_button" type="submit"><span></span>接单</button>
+           </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  </div>
+  </form>
+
+  <form action="{% url 'merchant_info' %}" method="GET">
+      <button class="sqaure_button"><span></span>返 回 主 页</button>
+  </form>
+</body>
+</html>

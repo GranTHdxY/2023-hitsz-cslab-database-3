@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href = "/">
+  <link rel="stylesheet" type="text/css" href="../static/css/user_info.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/button.css">
+</head>
+
+<body>
+
+  <div class="user-info">
+    <div class="avatar">
+      <!-- 这里放置头像的代码 -->
+    </div>
+    <div class="info">
+      <p class="user-id">{{ username}}</p>
+    </div>
+  </div>
+  <form action ="{% url 'order_info' %}" method ="POST">
+    {% csrf_token %}
+    <div class="order-list-info">
+    <h1>订单信息</h1>
+    <h2>用户信息</h2>
+    <p>姓名：{{ username}}</p>
+    <p>地址：
+      <input
+            type="text"
+            name="address"
+            placeholder="请补充你的地址"
+      />
+    </p>
+    <p>电话号码：{{ tel}}</p>
+    <h2>订单信息</h2>
+    <table class="list">
+    <tr>
+        <th>菜品名称</th>
+        <th>菜品价格</th>
+        <th>下单数量</th>
+    </tr>
+    <tr>
+      {% for cuisine_name,cuisine_price,cuisine_quantity in cuisines %}
+        <td>{{ cuisine_name}}</td>
+        <td>{{ cuisine_price }}</td>
+        <td>{{ cuisine_quantity }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+
+    <p>总花费：{{ sum_cost}}</p>
+    <p>订单编号：{{ order_id}}</p>
+    <p>下单时间：{{ payment_time}}</p>
+    <p>订单状态：{{ order_state}}</p>
+  </div>
+    <button class="sqaure_button" type="submit" name = "button_type" value = "settlement"><span></span>结算</button>
+  </form>
+
+</body>
+</html>

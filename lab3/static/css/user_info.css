@@ -1,0 +1,70 @@
+body {
+    margin: 0 auto;
+    font-family: "PingFang SC", "Microsoft Yahei", sans-serif;
+    text-align: center;
+}
+
+.user-info {
+    position: relative;
+    text-align: right;
+    padding: 20px;
+    border: 2px solid blue;
+}
+
+.avatar {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ccc;
+    /* 这里可以根据需要设置头像的样式，例如背景图像 */
+}
+
+.info {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 20px;
+}
+
+.user-id {
+    font-size: 18px;
+    color: #333;
+}
+
+.content {
+    padding: 20px;
+    height:400px;
+    margin: 0 auto;   /* 居中布局 */
+    width: 800px;    /* 设置表格宽度 */
+    border: 2px solid blue;
+}
+
+.container {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.list li {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ccc;
+    text-align: center;   /* 将表格中的内容居中显示 */
+}
+
+.list li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.list li a:hover {
+    color: #000;
+    background-color: #ddd▋
+
+

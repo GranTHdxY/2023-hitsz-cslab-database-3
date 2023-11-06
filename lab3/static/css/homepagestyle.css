@@ -1,0 +1,48 @@
+html,
+body {
+    margin: 0 auto;
+    font-family: "PingFang SC", "Microsoft Yahei", sans-serif;
+    text-align: center;
+}
+
+.container {
+    
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+}
+
+.login-form {
+    width: 240px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    text-align: center;
+    position: relative;
+    z-index: 100;
+    background: inherit;
+    border-radius: 18px;
+    overflow: hidden; /* 隐藏多余的模糊效果*/
+}
+
+footer {
+    bottom: -50px ;
+  }
+
+.container .user-login-sign{
+    border: 5px solid blue;
+    height: 200px;
+    padding: 80px;
+    text-align: center;
+    position: relative;
+    
+    border-radius: 18px;
+}
+
+  
+    
+    

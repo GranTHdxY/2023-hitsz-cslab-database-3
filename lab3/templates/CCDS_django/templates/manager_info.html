@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href = "/">
+  <link rel="stylesheet" type="text/css" href="../static/css/user_info.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/button.css">
+</head>
+
+<body>
+<form action="{% url 'manager_info' %}" method="GET">
+  <div class="user-info">
+    <div class="avatar">
+      <img src= {{avatar_url}}>
+    </div>
+    <div class="info">
+      <p class="user-id">{{ username}}</p>
+    </div>
+  </div>
+
+
+  <div class="content">
+
+    <h2>管理的食堂列表</h2>
+    <div class="container">
+      <ul class="list", name = canteen_list>
+        {% for canteen_name in canteen_list %}
+        <li>{{ canteen_name }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</form>
+
+    <form action="{% url 'homepage' %}" method="GET">
+      <button class="sqaure_button"><span></span>登 出</button>
+    </form>
+
+</body>
+</html>

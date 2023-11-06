@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href = "/">
+  <link rel="stylesheet" type="text/css" href="../static/css/user_info.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/button.css">
+</head>
+
+<body>
+
+  <div class="user-info">
+    <div class="avatar">
+      <img src= {{avatar_url}}>
+    </div>
+    <div class="info">
+      <p class="user-id">{{ username}}
+      </p>
+    </div>
+  </div>
+
+<div class="content">
+  <h2>商铺列表</h2>
+  <div class="container">
+    <table class="list">
+      <thead>
+        <tr>
+          <th>商铺名称</th>
+          <th>商铺所属食堂</th>
+          <th>商铺评价</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for store in store_list %}
+        <tr>
+          <td>
+            <a href="{% url 'store_info' store.store_id %}?action=view_store">
+              <h3>{{ store.store_name }}</h3>
+            </a>
+          </td>
+          <td>
+            <p>{{ store.canteen_id }}食堂</p>
+          </td>
+          <td>
+            <p>{{ store.store_comment }}</p>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+  <form action="{% url 'homepage' %}" method="GET">
+      <button class="sqaure_button" name="button_type" value="homepage"><span></span>登 出</button>
+  </form>
+  <form action="{% url 'order_info' %}" method="GET">
+    <button href="{% url 'order_info' %}" class="sqaure_button" name="button_type" value="order_info"><span></span>订 单</button>
+  </form>
+
+</div>
+  
+</body>
+</html>

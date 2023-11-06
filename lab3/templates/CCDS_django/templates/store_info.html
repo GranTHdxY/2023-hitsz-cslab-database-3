@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href = "/">
+  <link rel="stylesheet" type="text/css" href="../static/css/user_info.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/button.css">
+</head>
+
+<body>
+<form action="{% url 'store_info' store_id%}" method="GET">
+  {% csrf_token %}
+  <div class="user-info">
+    <div class="avatar">
+      <!-- 这里放置头像的代码 -->
+    </div>
+    <div class="info">
+      <p class="user-name">{{ username}}</p>
+    </div>
+  </div>
+  <div class="content">
+  <h2>点菜</h2>
+  <div class="container">
+    <table class="list">
+      <tr>
+        <th>菜品名称</th>
+        <th>价格</th>
+        <th>评价</th>
+        <th>菜品描述</th>
+        <th>下单数量</th>
+      </tr>
+      {% for cuisine in cuisine_list %}
+      <tr>
+        <td>
+          <h3>{{ cuisine.cuisine_name}}</h3>
+        </td>
+        <td>
+          <p>{{ cuisine.cuisine_price}}</p>
+        </td>
+        <td>
+          <p>{{ cuisine.cuisine_comment}}</p>
+        </td>
+        <td>
+          <p>{{ cuisine.cuisine_description}}</p>
+        </td>
+        <td>
+            <input type="number" name="cuisine_num_{{ cuisine.cuisine_id }}" value="0" min="0">
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+    <button class="sqaure_button" type="button"><span></span>购物车</button>
+    <button class="sqaure_button" type="submit" name = 'button_type' value = 'place_order'><span></span>下单</button>
+  </form>
+
+</body>
+</html>

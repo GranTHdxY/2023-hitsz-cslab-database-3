@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="ie=edge"
+    />
+    <base href = "/">
+    <link rel="stylesheet" href="../static/css/ls_style.css" />
+    <link rel="stylesheet" href="../static/css/button.css" />
+    <title>sign up</title>
+  </head>
+  
+  <body>
+    <div class="container">
+        <form action="{% url 'signup' %}" method="POST" class="ls-form">
+          {% csrf_token %}
+          <h1>注 册</h1>
+          <input
+            type="text"
+            name="username"
+            placeholder="用户名"
+          />
+          <input
+            type="password1"
+            name="password1"
+            placeholder="密码"
+          />
+          <input
+            type="password2"
+            name="password2"
+            placeholder="确认密码"
+          />
+          <input
+            type="text"
+            name="tel"
+            placeholder="手机号码"
+          />
+          <div class="con_select">
+            <h3>选择用户类型</h3>
+            <select name="usertype" id="usertype" class="form-control" required>
+                    <option value="1">顾客</option>
+                    <option value="2">商家</option>
+                    <option value="3">食堂管理员</option>
+            </select>
+         </div>
+          <p>
+            <button class="sqaure_button"><span></span>注册</button>
+         </p> 
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+
+
+

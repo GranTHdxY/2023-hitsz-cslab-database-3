@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href = "/">
+  <link rel="stylesheet" type="text/css" href="../static/css/user_info.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/button.css">
+</head>
+
+<body>
+
+  <div class="user-info">
+    <div class="avatar">
+      <img src= {{avatar_url}}>
+    </div>
+    <div class="info">
+      <p class="user-id">{{ username}}
+      </p>
+    </div>
+  </div>
+
+<div class="success_message">
+  <h1>下单成功，等待商家接单！</h1>
+</div>
+
+  <form action="{% url 'pay_success' %}" method="GET">
+      <button class="sqaure_button"><span></span>返 回 主 页</button>
+  </form>
+
+</body>
+</html>

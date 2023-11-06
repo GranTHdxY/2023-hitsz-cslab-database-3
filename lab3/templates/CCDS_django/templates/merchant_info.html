@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href = '/'>
+  <link rel="stylesheet" type="text/css" href="../static/css/user_info.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/button.css">
+</head>
+
+<body>
+  <div class="user-info">
+    <div class="avatar">
+      <!-- 这里放置头像的代码 -->
+    </div>
+    <div class="info">
+      <p class="user-id">{{ username}}</p>
+    </div>
+  </div>
+  <div class="content">
+    <h2>拥有商铺列表</h2>
+    <div class="container">
+      <ul class="list">
+        {% for store_name in store_list %}
+        <li>{{ store_name }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <form action="{% url 'homepage' %}" method="GET">
+      <button class="sqaure_button"><span></span>登 出</button>
+  </form>
+
+  <form action="{% url 'merchant_info' %}" method="GET">
+    {% csrf_token %}
+    <button class="sqaure_button" name = "button_type" value = "process_order"><span></span>处 理 订 单</button>
+  </form>
+
+  <form action="{% url 'merchant_info' %}" method="GET">
+    {% csrf_token %}
+    <button class="sqaure_button" name = "button_type" value = "manage_cuisine"><span></span>管 理 菜 品</button>
+  </form>
+
+
+
+</body>
+</html>

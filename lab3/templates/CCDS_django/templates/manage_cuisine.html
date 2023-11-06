@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href = "/">
+  <link rel="stylesheet" type="text/css" href="../static/css/user_info.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/button.css">
+</head>
+
+<body>
+<form action="{% url 'manage_cuisine' %}" method="POST">
+  {% csrf_token %}
+  <div class="user-info">
+    <div class="avatar">
+      <!-- 这里放置头像的代码 -->
+    </div>
+    <div class="info">
+      <p class="user-name">{{ username}}</p>
+    </div>
+  </div>
+  <div class="content">
+  <h2>点菜</h2>
+  <div class="container">
+    <table class="list">
+      <tr>
+        <th>菜品名称</th>
+        <th>价格</th>
+        <th>操作</th>
+      </tr>
+      {% for cuisine in cuisine_list %}
+      <tr>
+        <input type="hidden" name="cuisine_id" value="{{ cuisine.cuisine_id }}">
+        <td>
+          <h3>{{ cuisine.cuisine_name}}</h3>
+        </td>
+        <td>
+          <p>{{ cuisine.cuisine_price}}</p>
+        </td>
+        <td>
+            <button class="button" type="submit" name = "button_type" value="off_the_shelves"><span></span>下 架</button>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+          <input
+            type="text"
+            name="cuisine_name"
+            placeholder="想要增加的菜品名称"
+          />
+          <input
+            type="text"
+            name="cuisine_price"
+            placeholder="菜品价格"
+          />
+      <button class="button" type = "submit" name = "button_type" value = "shelves"><span></span>上架</button>
+  </div>
+</div>
+  </form>
+  <form action="{% url 'merchant_info' %}" method="GET">
+      <button class="sqaure_button"><span></span>返 回 主 页</button>
+  </form>
+</body>
+</html>
